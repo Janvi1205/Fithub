@@ -10,17 +10,17 @@
             background-color: #000;
             color: #fff;
             line-height: 1.6;
-            overflow-x: hidden;
-        }
+             overflow-x: hidden;/* This prevents horizontal scrollbars from appearing and stops the page from scrolling sideways.*/
+        } 
 
         /* Navigation */
         nav {
-            position: fixed;
+            position: fixed;/*Even when i scroll down, the nav stays stuck at the same position*/
             top: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 1000;/*Higher z-index means it appears on top of other elements.*/
             padding: 1rem 5%;
             transition: all 0.3s ease;
         }
@@ -49,7 +49,7 @@
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease;/*The color transition will take 0.3 seconds*/
             position: relative;
         }
 
@@ -58,12 +58,12 @@
         }
 
         .nav-links a::after {
-            content: '';
+            content: '';/*Required for ::after to work... creates an empty invisible element after the <a> tag*/
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: -5px;/*Places the underline 5px below the bottom of the text.*/
+            left: 0;/*Aligns the underline to the left edge of the link*/
+            width: 0;/*Makes the underline invisible initially (zero width)....It will grow to full width on hover*/
+            height: 2px;/*The thickness of the underline.*/
             background: #f4e4bc;
             transition: width 0.3s ease;
         }
@@ -82,7 +82,7 @@
             text-align: center;
             padding: 0 5%;
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-            position: relative;
+            position: relative;/*Prepares the .hero to be a reference point for absolutely positioned child elements.Commonly used when you want to place decorative elements (like images, shapes, or overlays) on top of or inside the hero.*/
         }
 
         .hero::before {
@@ -173,6 +173,8 @@
             flex-wrap: wrap;
             opacity: 0;
             animation: fadeInUp 1s 1.1s forwards;
+            
+            
         }
 
         .stat {
@@ -220,6 +222,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             margin-top: 4rem;
+            cursor: pointer;
         }
 
         .feature {
@@ -260,6 +263,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            cursor: pointer;
         }
 
         .class-card {
@@ -562,5 +566,40 @@
         html {
             scroll-behavior: smooth;
         }
+
+        .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .stat {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        gap: 1rem;
+    }
+    
+    .stat {
+        padding: 0.5rem;
+    }
+}
 
         
