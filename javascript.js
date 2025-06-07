@@ -84,3 +84,39 @@ document.querySelectorAll('.class-card, .trainer-card, .plan').forEach(card => {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
+
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        const displayValue = Math.floor(current);
+        if (target >= 10) {
+            element.textContent = displayValue + '+';
+        } else {
+            element.textContent = displayValue;
+        }
+    }, 16);
+}
+
+function startCounterAnimation() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    counters.forEach((counter, index) => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        setTimeout(() => {
+            animateCounter(counter, target);
+        }, index * 200);
+    });
+}
+
+
+
