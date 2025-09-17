@@ -1,6 +1,6 @@
 
 // Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => { //a[href^="#"] this means selects all anchor (<a>) tags where the href attribute starts with # 
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
@@ -87,7 +87,7 @@ document.querySelectorAll('.class-card, .trainer-card, .plan').forEach(card => {
 
 function animateCounter(element, target, duration = 2000) {
     const start = 0;
-    const increment = target / (duration / 16);
+    const increment = target/(duration/16);
     let current = start;
     
     const timer = setInterval(() => {
